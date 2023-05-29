@@ -1,0 +1,19 @@
+{
+  "name": "university-management-app",
+  "version": "1.0.0",
+  "description": "The whole system includes three roles: Admin, Student, and Faculty. For students, they can easily manage their profiles, enroll in courses, pay tuition fees, access routines, view results, and evaluate teachers. Admins have comprehensive control over processes, while faculty members can manage grades, resources, and student information.",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.1"
+  }
+}
