@@ -71,7 +71,7 @@ We are building a university management system where we have three types of role
 
 #### api for users
 
-```http
+```javascript
 users/create-student (POST)
 users/create-faculty (POST)
 users/create-admin (POST)
@@ -93,7 +93,7 @@ users/:id/remove-permissions (POST)
 
 #### api for students
 
-```http
+```javascript
 students?page=1&limit=10 (GET)
 students/:id  (GET)
 students/:id    (PATCH)
@@ -105,7 +105,7 @@ students/:id    (PATCH)
 
 #### api for faculties
 
-```http
+```javascript
 faculties?page=1&limit=10 (GET)
 faculties/:id  (GET)
 faculties/:id    (PATCH)
@@ -117,7 +117,7 @@ faculties/:id    (PATCH)
 
 #### api for admins
 
-```http
+```javascript
 admins?page=1&limit=10 (GET)
 admins/:id  (GET)
 admin/:id    (PATCH)
