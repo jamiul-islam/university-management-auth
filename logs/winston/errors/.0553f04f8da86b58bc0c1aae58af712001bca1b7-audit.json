@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app/logs/winston/errors/.0553f04f8da86b58bc0c1aae58af712001bca1b7-audit.json",
+    "files": [
+        {
+            "date": 1685786643073,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app/logs/winston/errors/um-2023-06-03-16-error.log",
+            "hash": "e6a5a285b19d4bb4245a8854d0b17f8d7f3e59426685ed306b292aaee982e1d8"
+        }
+    ],
+    "hashType": "sha256"
+}
