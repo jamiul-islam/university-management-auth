@@ -1,6 +1,7 @@
 // contains database logic
 
 import config from '../../../config'
+import ApiError from '../../../errors/ApiError'
 import { generateId } from './user.utils'
 import { IUser } from './users.interface'
 import { User } from './users.model'
@@ -18,7 +19,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   const createdUser = await User.create(user)
 
   if (!createUser) {
-    throw new Error('Error creating user')
+    throw new ApiError(400, 'Error creating user')
   }
 
   return createdUser
