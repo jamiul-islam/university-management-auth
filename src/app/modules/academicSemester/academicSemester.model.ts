@@ -1,4 +1,6 @@
+import status from 'http-status'
 import { Schema, model } from 'mongoose'
+import ApiError from '../../../errors/ApiError'
 import {
   AcademicSemesterModel,
   IAcademicSemester,
@@ -29,6 +31,17 @@ const AcademicSemesterSchema = new Schema<IAcademicSemester>(
   },
   { timestamps: true } //mongoose will set createdAt and updatedAt fields automatically
 )
+
+AcademicSemesterSchema.pre('save', async function (next) {
+  const doesExist = await AcademicSemester.findOne({
+    title: this.title,
+    year: this.year,
+  })
+  if (doesExist) {
+    throw new ApiError(status.CONFLICT, 'Academic Semester already exists')
+  }
+  next()
+})
 
 export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
   'AcademicSemester',
