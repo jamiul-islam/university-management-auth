@@ -20,3 +20,9 @@ export const AcademicSemesterTitle: string[] = ['Winter', 'Fall', 'Summer']
 export const AcademicSemesterCode: string[] = ['01', '02', '03']
 export const AcademicSemesterStartMonth: MonthName[] = AcademicSemesterMonth
 export const AcademicSemesterEndMonth: MonthName[] = AcademicSemesterMonth
+
+export const AcademicSemesterTitleCodeMapper: { [key: string]: string } = {
+  Winter: '01',
+  Fall: '02',
+  Summer: '03',
+}

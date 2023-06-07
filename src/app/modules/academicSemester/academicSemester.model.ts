@@ -1,4 +1,4 @@
-import status from 'http-status'
+import httpStatus from 'http-status'
 import { Schema, model } from 'mongoose'
 import ApiError from '../../../errors/ApiError'
 import {
@@ -38,7 +38,7 @@ AcademicSemesterSchema.pre('save', async function (next) {
     year: this.year,
   })
   if (doesExist) {
-    throw new ApiError(status.CONFLICT, 'Academic Semester already exists')
+    throw new ApiError(httpStatus.CONFLICT, 'Academic Semester already exists')
   }
   next()
 })
