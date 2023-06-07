@@ -75,6 +75,7 @@ We are building a university management system where we have three types of role
 users/create-student (POST)
 users/create-faculty (POST)
 users/create-admin (POST)
+users/api/v1/academic-semester/create-semester (POST)
 users/my-profile (GET)
 users/:id (GET)
 users/:id (PATCH)

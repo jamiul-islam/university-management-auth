@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/successes/.55343815e3d02143a22c6fbdada9b068c757651e-audit.json",
+    "files": [
+        {
+            "date": 1685992114416,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/successes/um-2023-06-06-01-success.log",
+            "hash": "0386472d0a0df2779139236eaa1d491bc96af913b90e1a7ea3360cb5af280b9b"
+        },
+        {
+            "date": 1686148774217,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/successes/um-2023-06-07-20-success.log",
+            "hash": "6c01763a11018779317dd1c29537864a5ae9faa0e80b86662db16d34bd0b9610"
+        },
+        {
+            "date": 1686152861090,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/successes/um-2023-06-07-21-success.log",
+            "hash": "da7c8e33806835faff33ee445cfc52d860369080c8b7182e97e07802a52e5329"
+        },
+        {
+            "date": 1686154437659,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/successes/um-2023-06-07-22-success.log",
+            "hash": "5e07241c16216a9a132fcc0d5e9006fb66ac352b59b7590727ad12a660adeb49"
+        }
+    ],
+    "hashType": "sha256"
+}
