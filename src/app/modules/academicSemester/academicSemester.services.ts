@@ -1,7 +1,7 @@
 import status from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { IGenericResponse } from '../../../interfaces/common';
-import { IPaginationOption } from '../../../interfaces/paginationType';
+import { IPaginationOption } from '../../../interfaces/paginationOption';
 import { AcademicSemesterTitleCodeMapper } from './academicSemester.constants';
 import { IAcademicSemester } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';

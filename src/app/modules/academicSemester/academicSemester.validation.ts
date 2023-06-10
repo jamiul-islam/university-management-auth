@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 const createAcademicSemesterZodSchema = z.object({
   body: z.object({
@@ -42,8 +42,8 @@ const createAcademicSemesterZodSchema = z.object({
       { required_error: 'Start month is required' }
     ),
   }),
-})
+});
 
 export const AcademicSemesterZodValidation = {
   createAcademicSemesterZodSchema,
-}
+};

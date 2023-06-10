@@ -1,4 +1,4 @@
-import { MonthName } from './academicSemester.interface'
+import { MonthName } from './academicSemester.interface';
 
 // create academic semester month names with type validation
 export const AcademicSemesterMonth: MonthName[] = [
@@ -14,15 +14,15 @@ export const AcademicSemesterMonth: MonthName[] = [
   'October',
   'November',
   'December',
-]
+];
 
-export const AcademicSemesterTitle: string[] = ['Winter', 'Fall', 'Summer']
-export const AcademicSemesterCode: string[] = ['01', '02', '03']
-export const AcademicSemesterStartMonth: MonthName[] = AcademicSemesterMonth
-export const AcademicSemesterEndMonth: MonthName[] = AcademicSemesterMonth
+export const AcademicSemesterTitle: string[] = ['Winter', 'Fall', 'Summer'];
+export const AcademicSemesterCode: string[] = ['01', '02', '03'];
+export const AcademicSemesterStartMonth: MonthName[] = AcademicSemesterMonth;
+export const AcademicSemesterEndMonth: MonthName[] = AcademicSemesterMonth;
 
 export const AcademicSemesterTitleCodeMapper: { [key: string]: string } = {
   Winter: '01',
   Fall: '02',
   Summer: '03',
-}
+};
