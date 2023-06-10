@@ -1,5 +1,6 @@
 import status from 'http-status'
 import ApiError from '../../../errors/ApiError'
+import { IPaginationOption } from '../../../interfaces/paginationOption'
 import { AcademicSemesterTitleCodeMapper } from './academicSemester.contants'
 import { IAcademicSemester } from './academicSemester.interface'
 import { AcademicSemester } from './academicSemester.model'
@@ -19,6 +20,11 @@ const createAcademicSemester = async (
   return result
 }
 
+const getAllAcademicSemesters = async (paginationOption: IPaginationOption) => {
+  return paginationOption
+}
+
 export const AcademicSemesterService = {
   createAcademicSemester,
+  getAllAcademicSemesters,
 }
