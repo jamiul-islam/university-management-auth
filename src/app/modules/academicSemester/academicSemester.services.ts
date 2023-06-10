@@ -11,6 +11,7 @@ import {
 } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';
 
+// create a semester
 const createAcademicSemester = async (
   payload: IAcademicSemester
 ): Promise<IAcademicSemester> => {
@@ -26,6 +27,7 @@ const createAcademicSemester = async (
   return result;
 };
 
+// get all semesters
 const getAllAcademicSemesters = async (
   filters: IAcademicSemesterFilters,
   paginationOption: IPaginationOption
@@ -70,8 +72,12 @@ const getAllAcademicSemesters = async (
     sortCondition[sortBy] = sortOrder;
   }
 
+  // returns data with or without search and filter conditions
+  const disregardConditions =
+    andConditions.length > 0 ? { $and: andConditions } : {};
+
   // getting result
-  const result = await AcademicSemester.find({ $and: andConditions })
+  const result = await AcademicSemester.find({ disregardConditions })
     .sort(sortCondition)
     .skip(skip)
     .limit(limit);
@@ -88,7 +94,16 @@ const getAllAcademicSemesters = async (
   };
 };
 
+// get one semester by id
+const getAcademicSemesterById = async (
+  id: string
+): Promise<IAcademicSemester | null> => {
+  const result = await AcademicSemester.findById(id);
+  return result;
+};
+
 export const AcademicSemesterService = {
   createAcademicSemester,
   getAllAcademicSemesters,
+  getAcademicSemesterById,
 };
