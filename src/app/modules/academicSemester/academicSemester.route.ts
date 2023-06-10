@@ -13,11 +13,13 @@ router.post(
   AcademicSemesterDataController.createSemester
 );
 
-router.get(
+router.patch(
   '/:id',
-  validateRequest(AcademicSemesterZodValidation.updateAcademicSemesterZodSchema)
+  validateRequest(
+    AcademicSemesterZodValidation.updateAcademicSemesterZodSchema
+  ),
+  AcademicSemesterDataController.updateSemester
 );
-router.patch('/:id', AcademicSemesterDataController.updateSemester);
 
 router.get('/', AcademicSemesterDataController.getAllSemesters);
 
