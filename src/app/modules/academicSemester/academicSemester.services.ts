@@ -102,6 +102,7 @@ const getAcademicSemesterById = async (
   return result;
 };
 
+// update semester by id
 const updateAcademicSemesterById = async (
   id: string,
   payload: Partial<IAcademicSemester>
@@ -120,9 +121,18 @@ const updateAcademicSemesterById = async (
   return result;
 };
 
+// delete semester by id
+const deleteAcademicSemesterById = async (
+  id: string
+): Promise<IAcademicSemester | null> => {
+  const result = await AcademicSemester.findByIdAndDelete(id);
+  return result;
+};
+
 export const AcademicSemesterService = {
   createAcademicSemester,
   getAllAcademicSemesters,
   getAcademicSemesterById,
   updateAcademicSemesterById,
+  deleteAcademicSemesterById,
 };
