@@ -22,6 +22,8 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 
 // get all semesters
 const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
+  // filter query
+  const filters = pick(req.query as any, ['searchTerm']);
   // pagination option
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const paginationOption = pick(req.query as any, [
@@ -33,6 +35,7 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
 
   // get result
   const result = await AcademicSemesterService.getAllAcademicSemesters(
+    filters,
     paginationOption
   );
 

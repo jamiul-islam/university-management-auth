@@ -8,23 +8,26 @@ import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interfaces/error';
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
-  // console.log(error)
-
+  // initialize global variables
   let statusCode = 500;
   let message = 'Something went wrong !';
   let errorMessages: IGenericErrorMessage[] = [];
 
+  // validation error
   if (error?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(error);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
-  } else if (error instanceof ZodError) {
+
     // zod error handler here
+  } else if (error instanceof ZodError) {
     const simplifiedError = handleZodError(error);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
+
+    // mongoose error handler here
   } else if (error instanceof ApiError) {
     statusCode = error?.statusCode;
     message = error.message;
@@ -48,6 +51,7 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
       : [];
   }
 
+  // send response
   res.status(statusCode).json({
     success: false,
     message,
