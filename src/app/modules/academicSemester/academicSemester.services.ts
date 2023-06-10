@@ -1,4 +1,4 @@
-import status from 'http-status';
+import httpStatus from 'http-status';
 import { SortOrder } from 'mongoose';
 import ApiError from '../../../errors/ApiError';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
@@ -17,7 +17,7 @@ const createAcademicSemester = async (
 ): Promise<IAcademicSemester> => {
   if (AcademicSemesterTitleCodeMapper[payload.title] !== payload.code) {
     throw new ApiError(
-      status.BAD_REQUEST,
+      httpStatus.BAD_REQUEST,
       'Invalid Semester title and code combination!'
     );
   }
@@ -102,8 +102,27 @@ const getAcademicSemesterById = async (
   return result;
 };
 
+const updateAcademicSemesterById = async (
+  id: string,
+  payload: Partial<IAcademicSemester>
+): Promise<IAcademicSemester | null> => {
+  if (
+    payload.title &&
+    payload.code &&
+    AcademicSemesterTitleCodeMapper[payload.title] !== payload.code
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Semester Code');
+  }
+
+  const result = await AcademicSemester.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const AcademicSemesterService = {
   createAcademicSemester,
   getAllAcademicSemesters,
   getAcademicSemesterById,
+  updateAcademicSemesterById,
 };
