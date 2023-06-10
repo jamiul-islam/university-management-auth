@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import pick from '../../../pick';
@@ -23,9 +24,13 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 // get all semesters
 const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
   // filter query
-  const filters = pick(req.query as any, ['searchTerm']);
+  const filters = pick(req.query as any, [
+    'searchTerm',
+    'title',
+    'code',
+    'year',
+  ]);
   // pagination option
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const paginationOption = pick(req.query as any, [
     'page',
     'limit',

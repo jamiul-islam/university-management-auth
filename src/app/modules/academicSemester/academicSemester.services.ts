@@ -31,12 +31,15 @@ const getAllAcademicSemesters = async (
   paginationOption: IPaginationOption
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
   // initializing filter condition
-  const { searchTerm } = filters;
+  const { searchTerm, ...filterData } = filters;
 
   // getting filter condition
   const academicSemesterSearchableFields = ['title', 'code', 'year'];
+
+  // holds both partial and exact match conditions
   const andConditions = [];
 
+  // partially searching data
   if (searchTerm) {
     andConditions.push({
       $or: academicSemesterSearchableFields.map(field => ({
@@ -44,6 +47,15 @@ const getAllAcademicSemesters = async (
           $regex: searchTerm,
           $options: 'i',
         },
+      })),
+    });
+  }
+
+  // exact match of search data
+  if (Object.keys(filterData).length) {
+    andConditions.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
       })),
     });
   }
