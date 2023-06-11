@@ -4,7 +4,7 @@ The whole system includes three roles: Admin, Student, and Faculty. For students
 
 ## Authentication service
 
-We are building a university management system where we have three types of roles such as Admin, Student, Faculty.
+I am building a university management system where we have three types of roles such as Admin, Student, Faculty.
 
 <details>
 <summary>Student</summary>
@@ -66,6 +66,10 @@ We are building a university management system where we have three types of role
 ## ERP Model
 
 ![ERP model](https://i.ibb.co/4YxGFMH/fotor-2023-5-28-18-11-18.png)
+
+## How Query is Handled
+
+![Imgur](https://i.imgur.com/jvvDhhi.png)
 
 ## API Reference
 
