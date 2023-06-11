@@ -13,6 +13,8 @@ router.post(
   AcademicSemesterDataController.createSemester
 );
 
+router.get('/:id', AcademicSemesterDataController.getSingleSemester);
+
 router.patch(
   '/:id',
   validateRequest(

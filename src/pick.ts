@@ -1,6 +1,6 @@
 // ['page', 'limit', 'sortBy', 'sortOrder']
 
-const pick = <T extends keyof Record<string, unknown>, k extends keyof T>(
+const pick = <T extends Record<string, unknown>, k extends keyof T>(
   obj: T,
   keys: k[]
 ): Partial<T> => {

@@ -38,6 +38,10 @@ const getAllAcademicSemesters = async (
   // getting filter condition
   const academicSemesterSearchableFields = ['title', 'code', 'year'];
 
+  // generating pagination options
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(paginationOption);
+
   // holds both partial and exact match conditions
   const andConditions = [];
 
@@ -62,10 +66,6 @@ const getAllAcademicSemesters = async (
     });
   }
 
-  // getting pagination options
-  const { page, limit, skip, sortBy, sortOrder } =
-    paginationHelpers.calculatePagination(paginationOption);
-
   // sorting options
   const sortCondition: { [key: string]: SortOrder } = {};
   if (sortBy && sortOrder) {
@@ -77,7 +77,7 @@ const getAllAcademicSemesters = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   // getting result
-  const result = await AcademicSemester.find({ disregardConditions })
+  const result = await AcademicSemester.find(disregardConditions)
     .sort(sortCondition)
     .skip(skip)
     .limit(limit);

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import pick from '../../../pick';
@@ -24,14 +23,9 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 // get all semesters
 const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
   // filter query
-  const filters = pick(req.query as any, [
-    'searchTerm',
-    'title',
-    'code',
-    'year',
-  ]);
+  const filters = pick(req.query, ['searchTerm', 'title', 'code', 'year']);
   // pagination option
-  const paginationOption = pick(req.query as any, [
+  const paginationOption = pick(req.query, [
     'page',
     'limit',
     'sortBy',
@@ -49,8 +43,8 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Semesters retrieved successfully!',
-    data: result.data,
     meta: result.meta,
+    data: result.data,
   });
 });
 
