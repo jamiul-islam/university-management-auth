@@ -14,6 +14,16 @@
             "date": 1686571530337,
             "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/errors/um-2023-06-12-18-error.log",
             "hash": "8cd4d4b312e3abec90712377d2ecd162b3e549ee86107df59f6395c0ff8b475e"
+        },
+        {
+            "date": 1686581711795,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/errors/um-2023-06-12-20-error.log",
+            "hash": "03f3ee86be2a14eebfc6d18b49e2d5d7b40d37d5abc6e9d9ca9b604d5c22f684"
+        },
+        {
+            "date": 1686647596695,
+            "name": "/Users/tomcat1112k/Desktop/Next Level/03. University Management App Backend/university-management-app--backend-auth/logs/winston/errors/um-2023-06-13-15-error.log",
+            "hash": "8c6f228cdc7378ce821f8e3a0dc8fdb0f7dad3f3ecc4d2b6675e0853aad4d106"
         }
     ],
     "hashType": "sha256"
