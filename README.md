@@ -65,11 +65,18 @@ I am building a university management system where we have three types of roles 
 
 ## ERP Model
 
-![ERP model](https://i.ibb.co/4YxGFMH/fotor-2023-5-28-18-11-18.png)
+![ERP Model](https://imgur.com/eQyokHL.jpg)
 
 ## How Query is Handled
 
-![Imgur](https://i.imgur.com/jvvDhhi.png)
+![query model](https://imgur.com/dyyA8Ef.png)
+
+## Dynamic id generation
+
+| name    | faculty id                  | student id                                    | admin id                  |
+| ------- | --------------------------- | --------------------------------------------- | ------------------------- |
+| formula | Faculty F followed by 00001 | last 2 digits of year + semester code + 00001 | Admin A followed by 00001 |
+| exp     | F00001                      | 250300001                                     | A00001                    |
 
 ## API Reference
 

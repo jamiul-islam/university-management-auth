@@ -38,4 +38,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // global error handler
 app.use(globalErrorHandler);
 
+// // testing dynamic IDs
+// const testID = async () => {
+//   const testID = await generateFacultyId();
+//   console.log(testID);
+// };
+// testID();
+
 export default app;
