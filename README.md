@@ -71,6 +71,13 @@ I am building a university management system where we have three types of roles 
 
 ![query model](https://imgur.com/dyyA8Ef.png)
 
+## Dynamic id generation
+
+| name    | faculty id                  | student id                                    | admin id                  |
+| ------- | --------------------------- | --------------------------------------------- | ------------------------- |
+| formula | Faculty F followed by 00001 | last 2 digits of year + semester code + 00001 | Admin A followed by 00001 |
+| exp     | F00001                      | 250300001                                     | A00001                    |
+
 ## API Reference
 
 #### api for users
