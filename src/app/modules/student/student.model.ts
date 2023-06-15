@@ -35,12 +35,12 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
     },
     email: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
     contactNo: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
     emergencyContactNo: {
