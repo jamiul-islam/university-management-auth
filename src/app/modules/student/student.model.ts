@@ -35,12 +35,12 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
     },
     email: {
       type: String,
-      // unique: true,
+      unique: true,
       required: true,
     },
     contactNo: {
       type: String,
-      // unique: true,
+      unique: true,
       required: true,
     },
     emergencyContactNo: {
@@ -140,5 +140,9 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
     },
   }
 );
+
+// StudentSchema.index({
+//   bloodGroup: 1,
+// });
 
 export const Student = model<IStudent, StudentModel>('Student', StudentSchema);

@@ -1,0 +1,21 @@
+{
+  "role": "student",
+  "password": "",
+  "faculty": {
+    "role": "faculty",
+    "password": "",
+    "name": "Mithu sir",
+    "profileImage": "",
+    "dateOfBirth": "01-01-01",
+    "email": "email@email.com",
+    "contactNo": "01777",
+    "emergencyContactNo": "01333",
+    "gender": "male",
+    "permanentAddress": "BGR",
+    "presentAddress": "BGR",
+    "bloodGroup": "A+",
+    "academicDepartment": "",
+    "academicFaculty": "",
+    "designation": "Dean of Computer Science"
+  }
+}

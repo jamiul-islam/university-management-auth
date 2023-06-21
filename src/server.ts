@@ -1,12 +1,12 @@
-/* eslint-disable no-console */
 import { Server } from 'http';
 import mongoose from 'mongoose';
 import app from './app';
 import config from './config/index';
+import { errorLogger, infoLogger } from './shared/logger';
 
 // handle uncaught exception
 process.on('uncaughtException', error => {
-  console.log(error);
+  errorLogger.error(error);
   process.exit(1);
 });
 
@@ -15,31 +15,35 @@ let server: Server;
 async function main() {
   try {
     await mongoose.connect(config.databaseUrl as string);
-    console.log(`🛢️ database connected successful`);
+    infoLogger.info(`🛢️ database connected successful`);
 
     server = app.listen(config.port, () => {
-      console.log(`Application app listening on port ${config.port}`);
+      infoLogger.info(`Application app listening on port ${config.port}`);
     });
   } catch (error) {
-    console.log(`connection failed`, error);
+    errorLogger.error(`connection failed`, error);
   }
 
   // handle unhandled rejection
   process.on('unhandledRejection', error => {
     if (server) {
-      console.log(error);
+      server.close(() => {
+        errorLogger.error(error);
+        process.exit(1);
+      });
+    } else {
+      process.exit(1);
     }
-    process.exit(1);
   });
 }
 main();
 
 // handle SIGTERM
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
+  infoLogger.info('SIGTERM received, shutting down gracefully');
   if (server) {
     server.close(() => {
-      console.log('Process terminated!');
+      infoLogger.info('Process terminated!');
     });
   }
 });
