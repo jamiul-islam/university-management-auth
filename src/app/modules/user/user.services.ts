@@ -26,6 +26,7 @@ const createStudent = async (
   if (!user.password) {
     user.password = config.default_student_pass as string;
   }
+
   // set role
   user.role = 'student';
 
@@ -149,6 +150,7 @@ const createFaculty = async (
 
   return newUserAllData;
 };
+
 const createAdmin = async (
   admin: IAdmin,
   user: IUser
