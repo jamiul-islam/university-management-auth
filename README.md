@@ -1,10 +1,17 @@
 # University Management App
 
-The whole system includes three roles: Admin, Student, and Faculty. For students, they can easily manage their profiles, enroll in courses, pay tuition fees, access routines, view results, and evaluate teachers. Admins have comprehensive control over processes, while faculty members can manage grades, resources, and student information.
+[👉 live server](https://university-management-backend-01-lucifer1112k.vercel.app/)
+
+The whole system includes three roles: Admin, Student, and Faculty.
+
+- Students can easily manage their profiles, enroll in courses, pay tuition fees, access routines, view results, and evaluate teachers.
+- Admins have comprehensive control over processes, while faculty members can manage grades, resources, and student information.
+
+_for more features view the functional requirements_
 
 ## Authentication service
 
-I am building a university management system where we have three types of roles such as Admin, Student, Faculty.
+This repo is on authentication microservice - a university management system where we have three types of roles such as Admin, Student, Faculty.
 
 <details>
 <summary>Student</summary>
@@ -61,7 +68,7 @@ I am building a university management system where we have three types of roles 
 </ul>
 </details>
 
-[👉 Functional Requirements full document ](https://docs.google.com/document/d/140OWj0YQGSpn9RbugkPPDCswMsvcd5NfvuWoqzG06Qc/edit?usp=sharing)
+[👉 Functional Requirements full document](https://docs.google.com/document/d/140OWj0YQGSpn9RbugkPPDCswMsvcd5NfvuWoqzG06Qc/edit?usp=sharing)
 
 ## ERP Model
 
@@ -99,10 +106,6 @@ users/:id/assign-permissions (POST)
 users/:id/remove-permissions (POST)
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **optional**. Your API key |
-
 #### api for students
 
 ```javascript
@@ -111,10 +114,6 @@ students/:id  (GET)
 students/:id    (PATCH)
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **optional**. Your API key |
-
 #### api for faculties
 
 ```javascript
@@ -122,10 +121,6 @@ faculties?page=1&limit=10 (GET)
 faculties/:id  (GET)
 faculties/:id    (PATCH)
 ```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **optional**. Your API key |
 
 #### api for admins
 
@@ -139,8 +134,7 @@ admin/:id    (PATCH)
 | :-------- | :------- | :------------------------- |
 | `api_key` | `string` | **optional**. Your API key |
 
-## Authors
+## Author
 
-- github: [@jamiul-islam](https://github.com/jamiul-islam)
 - linkedin: [@jamiul-islam](https://linkedin.com/jamiul-islam)
 - twitter: [@jamiul-islam](https://twitter.com/lucifer1112k)
