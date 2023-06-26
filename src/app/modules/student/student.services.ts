@@ -92,22 +92,22 @@ const updateStudent = async (
 
   if (name && Object.keys(name).length > 0) {
     Object.keys(name).forEach(key => {
-      const nameKey = `name.${key}` as keyof Partial<IStudent>; // `name.firstName`
+      const nameKey = `name.${key}` as keyof Partial<IStudent>; // `name.fisrtName`
       (updatedStudentData as any)[nameKey] = name[key as keyof typeof name];
     });
   }
   if (guardian && Object.keys(guardian).length > 0) {
     Object.keys(guardian).forEach(key => {
-      const guardianKey = `guardian.${key}` as keyof Partial<IStudent>; // `guardian.firstGuardian`
+      const guardianKey = `guardian.${key}` as keyof Partial<IStudent>; // `guardian.fisrtguardian`
       (updatedStudentData as any)[guardianKey] =
         guardian[key as keyof typeof guardian];
     });
   }
   if (localGuardian && Object.keys(localGuardian).length > 0) {
     Object.keys(localGuardian).forEach(key => {
-      const localGuardianKey =
-        `localGuardian.${key}` as keyof Partial<IStudent>; // `localGuardian.firstName`
-      (updatedStudentData as any)[localGuardianKey] =
+      const localGuradianKey =
+        `localGuardian.${key}` as keyof Partial<IStudent>; // `localGuardian.fisrtName`
+      (updatedStudentData as any)[localGuradianKey] =
         localGuardian[key as keyof typeof localGuardian];
     });
   }

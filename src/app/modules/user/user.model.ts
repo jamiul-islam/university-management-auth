@@ -1,11 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-import bcrypt from 'bcrypt';
 import { Schema, model } from 'mongoose';
-import config from '../../../config';
 import { IUser, UserModel } from './user.interface';
 
-const UserSchema = new Schema<IUser, UserModel>(
+const userSchema = new Schema<IUser>(
   {
     id: {
       type: String,
@@ -19,11 +15,6 @@ const UserSchema = new Schema<IUser, UserModel>(
     password: {
       type: String,
       required: true,
-      select: 0,
-    },
-    needsPasswordChange: {
-      type: Boolean,
-      default: true,
     },
     student: {
       type: Schema.Types.ObjectId,
@@ -45,50 +36,4 @@ const UserSchema = new Schema<IUser, UserModel>(
     },
   }
 );
-
-UserSchema.statics.isUserExist = async function (
-  id: string
-): Promise<Pick<
-  IUser,
-  'id' | 'password' | 'role' | 'needsPasswordChange'
-> | null> {
-  return await User.findOne(
-    { id },
-    { id: 1, password: 1, role: 1, needsPasswordChange: 1 }
-  );
-};
-
-UserSchema.statics.isPasswordMatched = async function (
-  givenPassword: string,
-  savedPassword: string
-): Promise<boolean> {
-  return await bcrypt.compare(givenPassword, savedPassword);
-};
-
-// User.create() / user.save()
-UserSchema.pre('save', async function (next) {
-  // hashing user password
-  this.password = await bcrypt.hash(
-    this.password,
-    Number(config.bcrypt_salt_rounds)
-  );
-  next();
-});
-
-export const User = model<IUser, UserModel>('User', UserSchema);
-
-// UserSchema.methods.isUserExist = async function (
-//   id: string
-// ): Promise<Partial<IUser> | null> {
-//   return await User.findOne(
-//     { id },
-//     { id: 1, password: 1, needsPasswordChange: 1 }
-//   );
-// };
-
-// UserSchema.methods.isPasswordMatched = async function (
-//   givenPassword: string,
-//   savedPassword: string
-// ): Promise<boolean> {
-//   return await bcrypt.compare(givenPassword, savedPassword);
-// };
+export const User = model<IUser, UserModel>('User', userSchema);
