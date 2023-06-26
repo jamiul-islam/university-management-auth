@@ -52,12 +52,12 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
 const changePassword = catchAsync(async (req: Request, res: Response) => {
   const user = req.user;
   const { ...passwordData } = req.body;
-  const result = await AuthService.createPassword(passwordData, user);
+  const result = await AuthService.changePassword(passwordData, user);
 
-  sendResponse<ILoginUserResponse>(res, {
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User logged in successfully !',
+    message: 'Password changed in successfully !',
     data: result,
   });
 });

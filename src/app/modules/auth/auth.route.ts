@@ -17,7 +17,7 @@ router.post(
 );
 
 router.post(
-  '/change password',
+  '/change-password',
   validateRequest(AuthValidation.changePasswordZodSchema),
   AuthController.changePassword
 );

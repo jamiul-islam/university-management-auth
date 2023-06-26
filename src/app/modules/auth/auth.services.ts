@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import httpStatus from 'http-status';
-import { Secret } from 'jsonwebtoken';
+import { JwtPayload, Secret } from 'jsonwebtoken';
 import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import { User } from '../user/user.model';
 import {
+  IChangePassword,
   ILoginUser,
   ILoginUserResponse,
   IRefreshTokenResponse,
@@ -83,9 +87,18 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
   };
 };
 
-const createPassword = async (payload): Promise<ILoginUserResponse> => {
-  const { id, password } = payload;
-  const isUserExist = await User.isUserExist(id);
+const changePassword = async (
+  user: JwtPayload | null,
+  payload: IChangePassword
+) => {
+  const { oldPassword, newPassword } = payload;
+  // const isUserExist = await User.isUserExist(user.?userId);
+
+  // alternative of checking if an user exists
+  const isUserExist = await User.findOne({ id: user?.userId }).select(
+    '+password'
+  );
+  console.log(isUserExist);
 
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
@@ -93,35 +106,41 @@ const createPassword = async (payload): Promise<ILoginUserResponse> => {
 
   if (
     isUserExist.password &&
-    !(await User.isPasswordMatched(password, isUserExist.password))
+    !(await User.isPasswordMatched(oldPassword, isUserExist.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'old password is incorrect');
   }
 
   //create access token & refresh token
 
-  const { id: userId, role, needsPasswordChange } = isUserExist;
-  const accessToken = jwtHelpers.createToken(
-    { userId, role },
-    config.jwt.secret as Secret,
-    config.jwt.expires_in as string
-  );
+  // const { id: userId, role, needsPasswordChange } = isUserExist;
+  // const accessToken = jwtHelpers.createToken(
+  //   { userId, role },
+  //   config.jwt.secret as Secret,
+  //   config.jwt.expires_in as string
+  // );
 
-  const refreshToken = jwtHelpers.createToken(
-    { userId, role },
-    config.jwt.refresh_secret as Secret,
-    config.jwt.refresh_expires_in as string
-  );
+  // const refreshToken = jwtHelpers.createToken(
+  //   { userId, role },
+  //   config.jwt.refresh_secret as Secret,
+  //   config.jwt.refresh_expires_in as string
+  // );
 
-  return {
-    accessToken,
-    refreshToken,
-    needsPasswordChange,
-  };
+  // return {
+  //   accessToken,
+  //   refreshToken,
+  //   needsPasswordChange,
+  // };
+
+  // data update
+  isUserExist.needsPasswordChange = false;
+
+  // update using save
+  isUserExist.save();
 };
 
 export const AuthService = {
   loginUser,
   refreshToken,
-  createPassword,
+  changePassword,
 };
