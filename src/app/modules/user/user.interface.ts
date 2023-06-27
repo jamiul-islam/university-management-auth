@@ -9,18 +9,11 @@ export type IUser = {
   role: string;
   password: string;
   needsPasswordChange: true | false;
+  passwordChangedAt?: Date;
   student?: Types.ObjectId | IStudent;
   faculty?: Types.ObjectId | IFaculty;
   admin?: Types.ObjectId | IAdmin;
 };
-
-// export type IUserMethods = {
-//   isUserExist(id: string): Promise<Partial<IUser> | null>;
-//   isPasswordMatched(
-//     givenPassword: string,
-//     savedPassword: string
-//   ): Promise<boolean>;
-// };
 
 export type UserModel = {
   isUserExist(
