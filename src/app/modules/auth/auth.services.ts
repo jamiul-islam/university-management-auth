@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+import bcrypt from 'bcrypt';
 import httpStatus from 'http-status';
 import { JwtPayload, Secret } from 'jsonwebtoken';
 import config from '../../../config';
@@ -90,53 +90,40 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
 const changePassword = async (
   user: JwtPayload | null,
   payload: IChangePassword
-) => {
+): Promise<void> => {
   const { oldPassword, newPassword } = payload;
-  // const isUserExist = await User.isUserExist(user.?userId);
 
-  // alternative of checking if an user exists
-  const isUserExist = await User.findOne({ id: user?.userId }).select(
-    '+password'
-  );
-  console.log(isUserExist);
+  // checking if user exists
+  const isUserExist = await User.isUserExist(user?.userId);
 
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
   }
 
+  // checking if old password is correct
   if (
     isUserExist.password &&
     !(await User.isPasswordMatched(oldPassword, isUserExist.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'old password is incorrect');
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
   }
 
-  //create access token & refresh token
+  // hash password
+  const newHashedPassword = await bcrypt.hash(
+    newPassword,
+    Number(config.bcrypt_salt_rounds)
+  );
 
-  // const { id: userId, role, needsPasswordChange } = isUserExist;
-  // const accessToken = jwtHelpers.createToken(
-  //   { userId, role },
-  //   config.jwt.secret as Secret,
-  //   config.jwt.expires_in as string
-  // );
+  // update password query
+  const query = { id: user?.userId };
+  const updatePasswordQuery = {
+    password: newHashedPassword,
+    needsPasswordChange: false,
+    passwordChangedAt: new Date(),
+  };
 
-  // const refreshToken = jwtHelpers.createToken(
-  //   { userId, role },
-  //   config.jwt.refresh_secret as Secret,
-  //   config.jwt.refresh_expires_in as string
-  // );
-
-  // return {
-  //   accessToken,
-  //   refreshToken,
-  //   needsPasswordChange,
-  // };
-
-  // data update
-  isUserExist.needsPasswordChange = false;
-
-  // update using save
-  isUserExist.save();
+  // update password in database
+  await User.findOneAndUpdate(query, updatePasswordQuery);
 };
 
 export const AuthService = {
