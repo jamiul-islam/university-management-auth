@@ -2,14 +2,11 @@
 
 [👉 live server](https://university-management-backend-01-lucifer1112k.vercel.app/)
 
-The whole system includes three roles: Admin, Student, and Faculty.
+This is the documentation for the Authentication Service component of the University Management System. The Authentication Service provides authentication and authorization functionalities for the three main roles in the system: Admin, Student, and Faculty.
 
-- Students can easily manage their profiles, enroll in courses, pay tuition fees, access routines, view results, and evaluate teachers.
-- Admins have comprehensive control over processes, while faculty members can manage grades, resources, and student information.
+It is built using TypeScript, Express.js, Zod validation, and Mongoose.
 
-_for more features view the functional requirements_
-
-## Authentication service
+## Functional Requirements
 
 This repo is on authentication microservice - a university management system where we have three types of roles such as Admin, Student, Faculty.
 
