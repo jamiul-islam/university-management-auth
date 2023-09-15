@@ -18,4 +18,7 @@ export default {
     expires_in: process.env.JWT_EXPIRATION_TIME,
     refresh_expires_in: process.env.JWT_REFRESH_EXPIRATION_TIME,
   },
+  redis: {
+    url: process.env.REDIS_URL,
+  },
 };
