@@ -1,7 +1,22 @@
-import { MonthName } from './academicSemester.interface';
+import {
+  IAcademicSemesterCodes,
+  IAcademicSemesterMonths,
+  IAcademicSemesterTitles,
+} from './academicSemester.interface';
 
-// create academic semester month names with type validation
-export const AcademicSemesterMonth: MonthName[] = [
+export const academicSemesterTitles: IAcademicSemesterTitles[] = [
+  'Autumn',
+  'Summer',
+  'Fall',
+];
+
+export const academicSemesterCodes: IAcademicSemesterCodes[] = [
+  '01',
+  '02',
+  '03',
+];
+
+export const academicSemesterMonths: IAcademicSemesterMonths[] = [
   'January',
   'February',
   'March',
@@ -16,13 +31,23 @@ export const AcademicSemesterMonth: MonthName[] = [
   'December',
 ];
 
-export const AcademicSemesterTitle: string[] = ['Winter', 'Fall', 'Summer'];
-export const AcademicSemesterCode: string[] = ['01', '02', '03'];
-export const AcademicSemesterStartMonth: MonthName[] = AcademicSemesterMonth;
-export const AcademicSemesterEndMonth: MonthName[] = AcademicSemesterMonth;
-
-export const AcademicSemesterTitleCodeMapper: { [key: string]: string } = {
-  Winter: '01',
-  Fall: '02',
-  Summer: '03',
+export const academicSemesterTitleCodeMapper: {
+  [key: string]: string;
+} = {
+  Autumn: '01',
+  Summer: '02',
+  Fall: '03',
 };
+
+export const academicSemesterSearchableFields = ['title', 'code', 'year'];
+
+export const academicSemesterFilterableFields = [
+  'searchTerm',
+  'title',
+  'code',
+  'year',
+];
+
+export const EVENT_ACADEMIC_SEMESTER_CREATED = 'academic-semester.created';
+export const EVENT_ACADEMIC_SEMESTER_UPDATED = 'academic-semester.updated';
+export const EVENT_ACADEMIC_SEMESTER_DELETED = 'academic-semester.deleted';
