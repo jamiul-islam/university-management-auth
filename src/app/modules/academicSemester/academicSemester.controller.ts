@@ -9,7 +9,7 @@ import { AcademicSemesterService } from './academicSemester.services';
 // create semester
 const createSemester = catchAsync(async (req: Request, res: Response) => {
   const { ...academicSemesterData } = req.body;
-  const result = await AcademicSemesterService.createAcademicSemester(
+  const result = await AcademicSemesterService.createSemester(
     academicSemesterData
   );
   sendResponse<IAcademicSemester>(res, {
@@ -33,7 +33,7 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
   ]);
 
   // get result
-  const result = await AcademicSemesterService.getAllAcademicSemesters(
+  const result = await AcademicSemesterService.getAllSemesters(
     filters,
     paginationOption
   );
@@ -52,7 +52,7 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
 const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  const result = await AcademicSemesterService.getAcademicSemesterById(id);
+  const result = await AcademicSemesterService.getSingleSemester(id);
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
@@ -69,10 +69,7 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
   const updateData = req.body;
 
   // update semester by id
-  const result = await AcademicSemesterService.updateAcademicSemesterById(
-    id,
-    updateData
-  );
+  const result = await AcademicSemesterService.updateSemester(id, updateData);
 
   // send updated result
   sendResponse<IAcademicSemester>(res, {
@@ -87,7 +84,7 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
 const deleteSemester = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  const result = await AcademicSemesterService.deleteAcademicSemesterById(id);
+  const result = await AcademicSemesterService.deleteSemester(id);
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,

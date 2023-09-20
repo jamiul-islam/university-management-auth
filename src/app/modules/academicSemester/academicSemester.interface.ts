@@ -1,7 +1,6 @@
 import { Model } from 'mongoose';
 
-// type of calendar months names
-export type MonthName =
+export type IAcademicSemesterMonths =
   | 'January'
   | 'February'
   | 'March'
@@ -15,19 +14,30 @@ export type MonthName =
   | 'November'
   | 'December';
 
+export type IAcademicSemesterTitles = 'Autumn' | 'Summer' | 'Fall';
+
+export type IAcademicSemesterCodes = '01' | '02' | '03';
+
 export type IAcademicSemester = {
-  title: 'Winter' | 'Fall' | 'Summer';
-  year: string;
-  code: '01' | '02' | '03';
-  startMonth: MonthName;
-  endMonth: MonthName;
+  title: IAcademicSemesterTitles;
+  year: number;
+  code: IAcademicSemesterCodes;
+  startMonth: IAcademicSemesterMonths;
+  endMonth: IAcademicSemesterMonths;
+  syncId: string;
 };
+
+export type AcademicSemesterModel = Model<IAcademicSemester>;
 
 export type IAcademicSemesterFilters = {
   searchTerm?: string;
 };
 
-export type AcademicSemesterModel = Model<
-  IAcademicSemester,
-  Record<string, unknown>
->;
+export type IAcademicSemesterCreatedEvent = {
+  title: string;
+  year: string;
+  code: string;
+  startMonth: string;
+  endMonth: string;
+  id: string;
+};
